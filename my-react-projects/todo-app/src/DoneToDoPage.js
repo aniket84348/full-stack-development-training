@@ -1,30 +1,34 @@
-function DoneTodoPage() {
-  return (
-    <div className="bg-yellow-200 min-h-[250px] flex justify-center items-center p-4">
-      <table className="table-auto border border-black bg-white rounded shadow-md">
-        <thead>
-          <tr className="bg-yellow-300">
-            <th className="px-4 py-2 border border-black">Todo Title</th>
-            <th className="px-4 py-2 border border-black">Completed On</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="text-center">
-            <td className="px-4 py-2 border border-black">Goto gym</td>
-            <td className="px-4 py-2 border border-black">05/08/2025</td>
-          </tr>
-          <tr className="text-center">
-            <td className="px-4 py-2 border border-black">Goto gym</td>
-            <td className="px-4 py-2 border border-black">05/08/2025</td>
-          </tr>
-          <tr className="text-center">
-            <td className="px-4 py-2 border border-black">Goto gym</td>
-            <td className="px-4 py-2 border border-black">05/08/2025</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  );
+function DoneToDoPage(props) {
+    let todoArr = props.todo;
+
+    return (
+        <div className="bg-yellow-100 min-h-screen flex justify-center items-start py-10 px-4">
+            <div className="w-full max-w-5xl overflow-x-auto shadow-lg rounded-lg border border-gray-300 bg-white">
+                <table className="w-full table-auto text-left">
+                    <thead className="bg-yellow-300">
+                        <tr>
+                            <th className="px-6 py-3 text-md font-semibold text-gray-800 border-b border-gray-400">Completed Todo Title</th>
+                            <th className="px-6 py-3 text-md font-semibold text-gray-800 border-b border-gray-400">Status</th>
+                            <th className="px-6 py-3 text-md font-semibold text-gray-800 border-b border-gray-400">Completed Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {todoArr.map((todo) =>
+                            todo.status === "completed" && (
+                                <tr key={todo.id} className="hover:bg-yellow-50 transition">
+                                    <td className="px-6 py-4 border-b border-gray-200">{todo.todoTitle}</td>
+                                    <td className="px-6 py-4 border-b border-gray-200 capitalize text-green-700 font-medium">{todo.status}</td>
+                                    <td className="px-6 py-4 border-b border-gray-200">{new Date(todo.completedDate).toLocaleDateString()}</td>
+                                </tr>
+                            )
+                        )}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    );
 }
 
-export default DoneTodoPage;
+export default DoneToDoPage;
+
+

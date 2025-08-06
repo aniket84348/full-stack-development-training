@@ -1,42 +1,57 @@
 function ShowTodoPage(props) {
-  let todoArr = props.todo;
+    let todoArr = props.todo;
 
-  function handleClick(e, todoId) {
-    // delete todo from todoArr where id = todoId
-    todoArr = todoArr.filter(todo => todo.id !== todoId);
-    props.setTodo(todoArr);
-    alert("Todo Completed");
-  }
+    function handleClick(e, todoId) {
+        console.log("here")
+        let newTodoArr = []
 
-  return (
-    <div className="bg-purple-200 min-h-[250px] flex justify-center items-center p-4">
-      <table className="table-auto border border-black rounded shadow-md bg-white">
-        <thead>
-          <tr className="bg-purple-300">
-            <th className="px-4 py-2 border border-black">Todo Title</th>
-            <th className="px-4 py-2 border border-black">Due Date</th>
-            <th className="px-4 py-2 border border-black">Mark Done</th>
-          </tr>
-        </thead>
-        <tbody>
-          {todoArr.map((value) => (
-            <tr key={value.id} className="text-center">
-              <td className="px-4 py-2 border border-black">{value.todoTitle}</td>
-              <td className="px-4 py-2 border border-black">{value.dueDate}</td>
-              <td className="px-4 py-2 border border-black">
-                <button
-                  onClick={(e) => handleClick(e, value.id)}
-                  className="text-green-600 hover:bg-green-100 px-2 py-1 rounded"
-                >
-                  ✅
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
+        for (let i = 0; i < todoArr.length; i++) {
+            newTodoArr[i] = todoArr[i]
+
+            if (todoArr[i].id === todoId) {
+                console.log("here2")
+                newTodoArr[i].status = "completed";
+                newTodoArr[i].completedDate = new Date()
+                console.log(JSON.stringify(newTodoArr[i]))
+            }
+        }
+
+        props.setTodo(newTodoArr);
+    }
+
+    return (
+        <div class="bg-purple-200 min-h-[200px] flex justify-center items-center py-6">
+            <table class="table-auto border border-black bg-white shadow-lg rounded-lg overflow-hidden">
+                <thead class="bg-purple-400 text-white">
+                    <tr>
+                        <th class="border px-6 py-3 text-lg">Todo Title</th>
+                        <th class="border px-6 py-3 text-lg">Due Date</th>
+                        <th class="border px-6 py-3 text-lg">Mark Done</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        todoArr.map((value, index) => (
+                            value.status === "pending" && (
+                            <tr class="hover:bg-purple-100 transition">
+                                <td class="border px-4 py-2 text-center">{value.todoTitle}</td>
+                                <td class="border px-4 py-2 text-center">{value.dueDate}</td>
+                                <td class="border px-4 py-2 text-center">
+                                    <button
+                                        onClick={(e) => handleClick(e, value.id)}
+                                        class="text-green-600 hover:text-green-800 text-xl transition"
+                                    >
+                                        ✅
+                                    </button>
+                                </td>
+                            </tr>
+                            )
+                        ))
+                    }
+                </tbody>
+            </table>
+        </div>
+    )
 }
 
 export default ShowTodoPage;
