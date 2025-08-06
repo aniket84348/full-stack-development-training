@@ -1,8 +1,9 @@
-function Footer(){
-    return(
-        <div className="bg-gray-800 text-white py-4 text-center">
-            <h1 className="text-lg font-medium">React App Created By Aniket</h1>
-        </div>
+function Footer() {
+    return (
+        <footer class="flex justify-center bg-blue-300">
+            <p>Todo React App Created By ABC</p>
+        </footer>
     )
 }
-export default Footer
+
+export default Footer;

@@ -1,14 +1,23 @@
+import { Link } from 'react-router-dom'
+
 function Header() {
     return (
-        <div className="bg-gray-100 shadow-md p-4">
-            <nav className="flex justify-center space-x-4">
-                <button className="bg-green-400 text-white px-4 py-2 rounded hover:bg-blue-600 transition">Add</button>
+        <header class="flex justify-center bg-blue-300">
+            <nav class="space-x-4">
+                <Link to="/todo-add">
+                    <button class="bg-blue-500">Add</button>
+                </Link>
 
-                <button className="bg-blue-300 text-white px-4 py-2 rounded hover:bg-green-600 transition">Show</button>
-                
-                <button className="bg-purple-400 text-white px-4 py-2 rounded hover:bg-purple-600 transition">Done</button>
+                <Link to="/todo-show">
+                    <button class="bg-blue-500">Show</button>
+                </Link>
+
+                <Link to="/todo-done">
+                    <button class="bg-blue-500">Done</button>
+                </Link>
             </nav>
-        </div>
+        </header>
     )
 }
-export default Header
+
+export default Header;

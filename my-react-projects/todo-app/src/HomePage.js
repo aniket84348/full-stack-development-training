@@ -1,8 +1,12 @@
-function HomePage(){
-    return(
-        <div className="flex items-center justify-center h-screen bg-blue-100">
-            <h1 className="text-4xl font-bold text-gray-800 underline">MY TODO APP</h1>
+function HomePage() {
+    return (
+        <div class="bg-red-200 h-[200px] flex justify-center items-center">
+            <h1>
+                My Todo App
+            </h1>
+
         </div>
     )
 }
+
 export default HomePage;

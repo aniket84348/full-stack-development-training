@@ -1,41 +1,30 @@
-function DoneToDoPage() {
-    return(
-        <div>
-       <table class="table-auto border border-black">
-  <thead>
-    <tr>
-      <th class="border px-4 py-2">Completed Todo Title</th>
-      <th class="border px-4 py-2">Completed On</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="border px-4 py-2">Meditate for 10 mins</td>
-      <td class="border px-4 py-2">4/aug/2025</td>
-    </tr>
-    <tr>
-      <td class="border px-4 py-2">Watch React tutorial</td>
-      <td class="border px-4 py-2">6/aug/2025</td>
-    </tr>
-    <tr>
-      <td class="border px-4 py-2">Buy groceries</td>
-      <td class="border px-4 py-2">1/aug/2025</td>
-    </tr>
-    <tr>
-      <td class="border px-4 py-2">Review PR on GitHub</td>
-      <td class="border px-4 py-2">4/aug/2025</td>
-    </tr>
-    <tr>
-      <td class="border px-4 py-2">Drink 2L water</td>
-      <td class="border px-4 py-2">10/sep/2025</td>
-    </tr>
-    <tr>
-      <td class="border px-4 py-2">Stretch after work</td>
-      <td class="border px-4 py-2">15/dec/2025</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-    )
+function DoneTodoPage() {
+  return (
+    <div className="bg-yellow-200 min-h-[250px] flex justify-center items-center p-4">
+      <table className="table-auto border border-black bg-white rounded shadow-md">
+        <thead>
+          <tr className="bg-yellow-300">
+            <th className="px-4 py-2 border border-black">Todo Title</th>
+            <th className="px-4 py-2 border border-black">Completed On</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr className="text-center">
+            <td className="px-4 py-2 border border-black">Goto gym</td>
+            <td className="px-4 py-2 border border-black">05/08/2025</td>
+          </tr>
+          <tr className="text-center">
+            <td className="px-4 py-2 border border-black">Goto gym</td>
+            <td className="px-4 py-2 border border-black">05/08/2025</td>
+          </tr>
+          <tr className="text-center">
+            <td className="px-4 py-2 border border-black">Goto gym</td>
+            <td className="px-4 py-2 border border-black">05/08/2025</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  );
 }
-export default DoneToDoPage
+
+export default DoneTodoPage;

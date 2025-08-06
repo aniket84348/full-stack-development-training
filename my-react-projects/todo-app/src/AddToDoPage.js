@@ -1,64 +1,65 @@
 import { useState } from 'react'
 
-function AddToDoPage() {
+function AddTodoPage() {
+  let [formData, setFormData] = useState({
+    todoTitle: '',
+    dueDate: '',
+    status: 'pending'
+  });
 
-    let [formData, setFormData] = useState({
-        name: "",
-        number: 0,
-        email: "",
-        password: ""
-    })
+  function handleChange(e) {
+    let inputName = e.target.name;
+    let inputValue = e.target.value;
 
-    function handleChange(e) {
-        let inputTagName = e.target.name;
-        let inputTagValue = e.target.value;
+    setFormData(prev => ({
+      ...prev,
+      [inputName]: inputValue
+    }));
+  }
 
-        setFormData(previousObject => ({
-            ...previousObject,
-            [inputTagName]: inputTagValue
-        }))
-    }
+  function handleSubmit(e) {
+    e.preventDefault(); // prevent page refresh
+    alert("Form submitted, data = " + JSON.stringify(formData));
+  }
 
-    function handleSubmit(e) {
-        e.preventDefault();
-        // handle form submit logic here
-        console.log(formData);
-    }
-
-    return (
-        <div className="flex items-center justify-center min-h-screen bg-blue-100">
-            <form onSubmit={(e) => handleSubmit(e)} className="bg-white p-6 rounded shadow-md w-full max-w-md space-y-4">
-                
-                <label className="block text-gray-700 font-semibold">TodoTitle</label>
-                <input
-                    type="text"
-                    name="todoTitle"
-                    onChange={(e) => handleChange(e)}
-                    className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-                />
-
-                <label className="block text-gray-700 font-semibold">Due Date</label>
-                <input
-                    type="text"
-                    name="DueDate"
-                    onChange={(e) => handleChange(e)}
-                    className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-                />
-
-                <label className="block text-gray-700 font-semibold">Status</label>
-                <input
-                    type="text"
-                    name="status"
-                    onChange={(e) => handleChange(e)}
-                    className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-                />
-
-                <button className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition">
-                    Submit
-                </button>
-            </form>
+  return (
+    <div className="bg-pink-200 h-[250px] flex justify-center items-center">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white p-6 rounded shadow-md flex flex-col gap-4"
+      >
+        <div>
+          <label className="block mb-1 font-medium">Todo Title</label>
+          <input
+            type="text"
+            placeholder="Enter your todo title"
+            name="todoTitle"
+            value={formData.todoTitle}
+            onChange={handleChange}
+            className="w-full px-3 py-1 border rounded"
+          />
         </div>
-    )
+
+        <div>
+          <label className="block mb-1 font-medium">Due Date</label>
+          <input
+            type="date"
+            name="dueDate"
+            value={formData.dueDate}
+            onChange={handleChange}
+            className="w-full px-3 py-1 border rounded"
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  );
 }
 
-export default AddToDoPage
+export default AddTodoPage;
