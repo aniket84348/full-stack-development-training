@@ -1,4 +1,4 @@
-function LogoutPage() {
+function LogoutPage(props) {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <div className="bg-white shadow-lg rounded-xl p-8 text-center">
@@ -7,6 +7,7 @@ function LogoutPage() {
         </h1>
         <button
           className="bg-red-500 text-white font-semibold px-6 py-2 rounded-lg hover:bg-red-600 transition"
+          onClick={() => props.setIsLoggedIn(false)}
         >
           Confirm
         </button>

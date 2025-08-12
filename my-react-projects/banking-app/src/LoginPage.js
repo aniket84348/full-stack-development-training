@@ -1,7 +1,16 @@
-function LoginPage() {
+import { useNavigate } from "react-router-dom";
+
+function LoginPage(props) {
+  const navigate = useNavigate();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    props.setIsLoggedIn(true);
+    navigate('/detail')
+  }
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-100 to-blue-300">
-      <form className="bg-white p-8 rounded-xl shadow-md w-full max-w-sm space-y-6">
+      <form className="bg-white p-8 rounded-xl shadow-md w-full max-w-sm space-y-6" onSubmit={handleSubmit}>
         <h1 className="text-2xl font-bold text-center text-blue-700">
           Login to Your Bank Account
         </h1>
